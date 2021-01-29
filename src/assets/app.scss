@@ -72,7 +72,7 @@ $t-color: #9dab9f;
       border-radius: 0 0 1rem 1rem;
     }
     overflow: hidden;
-    padding: .5rem 1.5rem;
+    padding: .5rem 1.5rem 0;
     margin: 1px 0;
     background-color: var(--s-bg);
     color: var(--t-color);
@@ -84,7 +84,7 @@ $t-color: #9dab9f;
       text-decoration: none;
     }
     h3 {
-      margin: -.5rem -1.5rem;
+      margin: -.5rem -1.5rem 0;
       padding: 0;
       z-index: 1;
       a {
@@ -131,12 +131,15 @@ $t-color: #9dab9f;
     width: 1200px;
     margin: 0 auto;
   }
-  .answer-body > * {
-    padding-top: 1rem;
-  }
   .related-questions {
     border-top: 1px solid var(--s-bg-4);
     padding-top: 0;
+    h4 {
+      margin: .75rem 0 0;
+      + ul {
+        margin-top: .5rem;
+      }
+    }
   }
   .stackoverflow-light {
     section {
