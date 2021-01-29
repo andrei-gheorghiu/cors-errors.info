@@ -1,0 +1,213 @@
+@import "./hljs/stackoverflow-dark";
+.stackoverflow-light {
+  @import "./hljs/stackoverflow-light";
+}
+
+$bg-1: #13a2c3b5;
+$bg-2: rgba(14, 236, 210, 0.67);
+$bg-3: #bce35d;
+$bg-4: #8f6b94;
+$s-bg: #151d29;
+$f-1: #7cc47f;
+$f-2: #149498;
+$f-light: #ac881c;
+$t-color: #9dab9f;
+
+#app {
+  position: relative;
+  min-height: 100vh;
+  .sr-only {
+    position: absolute;
+    height: 0;
+    overflow: hidden;
+  }
+  > div {
+    &:before {
+      content: '';
+      position: fixed;
+      left: 0;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      background-color: rgba(0, 0, 0, .12);
+      pointer-events: none;
+    }
+
+    &.stackoverflow-light:before {
+      background-color: rgba(234, 232, 236, .95);
+    }
+  }
+  > * {
+    position: relative;
+    z-index: 1;
+  }
+  > * > .ps {
+    height: 100vh;
+  }
+  .ps__thumb-x, .ps__thumb-y {
+    background-color:var(--f-2);
+  }
+  .ps .ps__rail-x:hover,
+  .ps .ps__rail-y:hover,
+  .ps .ps__rail-x:focus,
+  .ps .ps__rail-y:focus,
+  .ps .ps__rail-x.ps--clicking,
+  .ps .ps__rail-y.ps--clicking {
+    background-color: darken($s-bg, 5);
+  }
+  .ps:hover > .ps__rail-x,
+  .ps:hover > .ps__rail-y,
+  .ps--focus > .ps__rail-x,
+  .ps--focus > .ps__rail-y,
+  .ps--scrolling-x > .ps__rail-x,
+  .ps--scrolling-y > .ps__rail-y {
+    opacity: 0.84;
+  }
+  section {
+    transition: all .25s cubic-bezier(.4,0,.2,1);
+    &:first-child {
+      border-radius: 1rem 1rem 0 0;
+    }
+    &:last-child {
+      border-radius: 0 0 1rem 1rem;
+    }
+    padding: .5rem 1.5rem;
+    margin: 1px 0;
+    background-color: var(--s-bg);
+    color: var(--t-color);
+    box-shadow: 0 1px 5px 0 rgba(0, 0, 0, .1), 0 2px 2px 0 rgba(0, 0, 0, .07), 0 3px 1px -2px rgba(0, 0, 0, .06);
+    a {
+      transition: color .25s cubic-bezier(.4,0,.2,1);
+      color: var(--f-1);
+      border-bottom: 1px dotted var(--f-3);
+      text-decoration: none;
+    }
+    h3 {
+      margin: -.5rem -1.5rem;
+      padding: 0;
+      z-index: 1;
+      a {
+        font-weight: bold;
+        border-bottom: 1px dotted transparent;
+        padding: 1.5rem;
+        display: block;
+      }
+    }
+    &.expanded h3 a {
+      border-radius: .35rem .35rem 0 0;
+      background-color: var(--s-bg-2);
+      border-bottom: 1px solid rgba(255,255,255,.07);
+    }
+    pre .hljs {
+      padding: 1rem;
+      border-radius: 6px;
+      background-color: var(--pre-hljs);
+      max-height: 450px;
+    }
+    &:hover {
+      box-shadow: 0 5px 5px -3px rgba(0, 0, 0, .1), 0 8px 10px 1px rgba(0, 0, 0, .07), 0 3px 14px 2px rgba(0, 0, 0, .06);
+    }
+    &:hover, &.expanded {
+      background-color: var(--s-bg-3);
+      a {
+        color: var(--f-light);
+      }
+    }
+  }
+  .sidebar {
+    order: 2;
+    padding: 1rem;
+    position: fixed;
+    width: 240px;
+    top: 4.2rem;
+    right: calc((100vw - 1200px) / 2);
+    background-color: var(--sb-bg);
+    border-radius: 3rem;
+    box-shadow: 0 1px 5px 0 rgba(0, 0, 0, .1), 0 2px 2px 0 rgba(0, 0, 0, .07), 0 3px 1px -2px rgba(0, 0, 0, .06);
+  }
+  .page {
+    padding: 2rem 270px 2rem 0;
+    width: 1200px;
+    margin: 0 auto;
+  }
+  .answer-body > * {
+    padding-top: 1rem;
+  }
+  .related-questions {
+    border-top: 1px solid var(--s-bg-4);
+    padding-top: 0;
+  }
+  .stackoverflow-light {
+    section {
+      box-shadow: 0 5px 5px -3px rgba(0, 0, 0, .05), 0 8px 10px 1px rgba(0, 0, 0, .03), 0 3px 14px 2px rgba(0, 0, 0, .02);
+      margin: 1px 0;
+      border-radius: 0;
+      background-color: #f9f9f9;
+      h3 a {
+        padding: 1rem 1.5rem;
+      }
+      &.expanded, &:hover {
+        background-color: #fff;
+        h3 a {
+          background-color: #fff;
+        }
+      }
+      &.expanded h3 a {
+        border-bottom: 1px solid rgba(0, 0, 0, .1);
+      }
+    }
+    .sidebar {
+      width: 269px;
+      border-radius: 0 2rem 2rem 0;
+    }
+  }
+  --bg-1: #{$bg-1};
+  --bg-2: #{$bg-2};
+  --bg-3: #{$bg-3};
+  --bg-4: #{$bg-4};
+  --s-bg: #{$s-bg};
+  --s-bg-2: #{darken($s-bg, 3)};
+  --s-bg-3: #{darken($s-bg, 5)};
+  --s-bg-4: #{desaturate($s-bg, 5)};
+  --sb-bg: rgba(0,0,0,.21);
+  --f-1: #{$f-1};
+  --f-2: #{$f-2};
+  --f-3: #{transparentize($f-1, .42)};
+  --f-light: #{$f-light};
+  --f-light-2: #{darken($f-light, 5)};
+  --t-color: #{$t-color};
+  --pre-hljs: #{saturate($s-bg, 5)};
+  .stackoverflow-light {
+    --bg-1: #eee;
+    --bg-2: #eee;
+    --bg-3: #ddd;
+    --bg-4: #ccc;
+    --s-bg: #ffffff;
+    --s-bg-2: #ffffff;
+    --s-bg-3: #ffffff;
+    --s-bg-4: #ccc;
+    --sb-bg: rgba(255,255,255,.65);
+    --f-1: #64564f;
+    --f-2: #64564f;
+    --f-3: #c30;
+    --f-light: #c30;
+    --f-light-2: darken(#c30, 5);
+    --t-color: rgb(38 53 49);
+    --pre-hljs: #f3f4f5;
+  }
+
+  //background: radial-gradient(ellipse at top left, $bg-1, transparent),
+  //radial-gradient(ellipse at bottom right, $bg-2, transparent);
+  background: radial-gradient(ellipse at top right, var(--bg-1), var(--bg-2)),
+  radial-gradient(ellipse at bottom right, var(--bg-3), var(--bg-4)), var(--s-bg);
+}
+body {
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,Helvetica,Arial,'Roboto', sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 16px;
+  line-height: 1.8rem;
+  * {
+    box-sizing: border-box;
+  }
+}
