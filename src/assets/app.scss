@@ -1,8 +1,20 @@
 @import "./style/theme";
 @import "./hljs/stackoverflow-dark";
 
-.stackoverflow-light, .vuetiful {
+.wild-duck {
+  pre .hljs {
+    background-color: var(--code-background);
+  }
+}
+
+.stackoverflow-light {
   @import "./hljs/stackoverflow-light";
+  pre .hljs:not(._) {
+    border-color: var(--soft-divider);
+  }
+}
+.vuetiful {
+  @import "./hljs/tomorrow-night";
 }
 
 body {
@@ -232,8 +244,8 @@ body {
     pre .hljs {
       padding: 1rem;
       border-radius: 6px;
-      background-color: var(--code-background);
       max-height: 450px;
+      border: 1px solid transparent;
     }
 
     &:hover {
@@ -262,7 +274,7 @@ body {
       color: var(--links-1);
     }
     &:hover svg {
-      color: var(--nav-links-1);
+      color: var(--nav-links-2);
     }
     .dropdown {
       top: 100%;

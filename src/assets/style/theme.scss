@@ -52,7 +52,7 @@ $t-color: #9dab9f;
     --scrollbar-bg: transparent;
     --text-color: rgb(38 53 49);
     --section-hover-text: rgb(38 53 49);
-    --code-background: #f3f4f5;
+    --code-background: initial;
     --code-inline: var(--links-2);
   }
   .vuetiful {
@@ -76,7 +76,7 @@ $t-color: #9dab9f;
     --scrollbar-bg: transparent;
     --text-color: rgb(38 53 49);
     --section-hover-text: rgb(38 53 49);
-    --code-background: #f0f3f6;
+    --code-background: initial;
     --code-inline: var(--nav-links-2);
   }
 }
