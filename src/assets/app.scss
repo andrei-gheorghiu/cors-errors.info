@@ -9,8 +9,11 @@
 
 .stackoverflow-light {
   @import "./hljs/stackoverflow-light";
-  pre .hljs:not(._) {
-    border-color: var(--soft-divider);
+  pre .hljs {
+    border-radius: 0;
+    &:not(._) {
+      outline: 1px solid var(--soft-divider);
+    }
   }
 }
 .vuetiful {
@@ -252,7 +255,6 @@ body {
       padding: 1rem;
       border-radius: 6px;
       max-height: 450px;
-      border: 1px solid transparent;
     }
 
     &:hover {
