@@ -13,7 +13,7 @@
     </div>
     <footer class="footer">
       <div>
-        This is footer...
+        <code>&copy; cors-errors.info&trade; &mdash; {{ new Date().getFullYear() }}</code>
       </div>
     </footer>
   </div>
