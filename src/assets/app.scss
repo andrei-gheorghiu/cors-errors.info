@@ -284,6 +284,11 @@ body {
         &:hover {
           background-color: var(--section-bg-2);
         }
+        &.active {
+          pointer-events: none;
+          background-color: var(--nav-links-1);
+          color: var(--section-bg-1);
+        }
       }
     }
   }

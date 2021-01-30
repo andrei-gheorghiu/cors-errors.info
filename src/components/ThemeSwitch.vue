@@ -5,6 +5,7 @@
       <a href
          v-for="theme in themes"
          :key="theme.class"
+         :class="{ active : theme.class === activeTheme }"
          v-text="theme.name"
          @click.prevent="$emit('update:activeTheme', theme.class)" />
     </div>
