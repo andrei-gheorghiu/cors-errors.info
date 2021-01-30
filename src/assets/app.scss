@@ -69,8 +69,6 @@ $t-color: #9dab9f;
   .sidebar {
     padding-top: 60px;
     padding-bottom: 60px;
-  }
-  .sidebar {
     width: 270px;
     flex-grow: 0;
     border-right: 1px solid  var(--layout-divider);
@@ -83,9 +81,9 @@ $t-color: #9dab9f;
         a {
           text-decoration: none;
           display: block;
-          line-height: 1.3;
-          font-weight: 500;
+          line-height: 1.2;
           padding: .5rem 1rem;
+          font-size: 14px;
           color: var(--f-1);
           &:hover, &.active {
             color: var(--f-light);
@@ -97,6 +95,10 @@ $t-color: #9dab9f;
           }
         }
       }
+    }
+    .ps {
+      margin-top: -60px;
+      padding: 60px 0;
     }
   }
   main {

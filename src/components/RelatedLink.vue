@@ -6,8 +6,8 @@
 
 <script lang="ts">
 import { defineComponent, computed } from 'vue'
-import faqs from '../faqs'
 import { useStore } from 'vuex'
+import { Faq } from '@/faqs'
 export default defineComponent({
   name: 'RelatedLink',
   props: {
@@ -18,7 +18,10 @@ export default defineComponent({
   },
   setup (props) {
     const store = useStore()
-    const name = computed(() => faqs.find(f => f.id === props.identifier)?.name || `#${props.identifier}`)
+    const questions = computed((): Faq[] => store.state.questions)
+    const name = computed(
+      () => questions.value.find(f => f.id === props.identifier)?.name || `#${props.identifier}`
+    )
     const activateQuestion = () => store.commit('setActiveIndex', props.identifier)
     return { name, activateQuestion }
   }

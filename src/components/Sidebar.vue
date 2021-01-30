@@ -1,16 +1,18 @@
 <template>
   <div class="sidebar">
-    <nav role="navigation">
-      <router-link :to="`/faq#${faq.id}`"
-                   v-for="faq in faqs"
-                   :key="faq.id"
-                   tag="div"
-                   v-slot="{ href, route, navigate }">
-        <a :href="href"
-           :class="{ active: route.hash === currentHash }"
-           @click="navigate">{{  faq.name }}</a>
-      </router-link>
-    </nav>
+    <perfect-scrollbar>
+      <nav role="navigation">
+        <router-link :to="`/faq#${faq.id}`"
+                     v-for="faq in faqs"
+                     :key="faq.id"
+                     tag="div"
+                     v-slot="{ href, route, navigate }">
+          <a :href="href"
+             :class="{ active: route.hash === currentHash }"
+             @click="navigate">{{  faq.name }}</a>
+        </router-link>
+      </nav>
+    </perfect-scrollbar>
   </div>
 </template>
 <script lang="ts">
@@ -28,3 +30,9 @@ export default defineComponent({
   }
 })
 </script>
+<style lang="scss">
+  .sidebar .ps {
+    height: 100vh;
+    overflow: hidden;
+  }
+</style>

@@ -10,7 +10,7 @@
 </template>
 
 <script lang="ts">
-import Question from '../components/Question'
+import Question from '@/components/Question.vue'
 import { computed, defineComponent, watchEffect, watch } from 'vue'
 import { useStore } from '@/store'
 import faqs from '@/faqs'

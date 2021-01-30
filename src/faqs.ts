@@ -44,4 +44,32 @@ export default [{
   id: 'b040',
   name: 'Why am I seeing a preflight OPTIONS request when I’m not setting any custom headers?',
   related: ['b7f6']
+}, {
+  id: 'cd59',
+  name: 'How can I avoid the preflight OPTIONS request?',
+  related: ['b7f6', 'b040']
+}, {
+  id: 'e21d',
+  name: 'Why am I seeing ‘405 - Method Not Allowed’?',
+  related: ['c320', 'b7f6']
+}, {
+  id: 'fcd5',
+  name: 'What is withCredentials? How do I enable it?',
+  related: ['cdc8', 'd926', 'ffcc']
+}, {
+  id: 'e9b8',
+  name: 'What happens when a CORS request fails?',
+  related: ['b4d0']
+}, {
+  id: 'c3f4',
+  name: 'Why is CORS so complicated?',
+  related: ['f173', 'ffcc']
+}, {
+  id: 'c381',
+  name: 'CORS is annoying. Why can’t I turn it off?',
+  related: ['c3f4', 'b7a4']
+}, {
+  id: 'b7a4',
+  name: 'What are the alternatives to CORS?',
+  related: ['c3f4', 'b7a4']
 }]
