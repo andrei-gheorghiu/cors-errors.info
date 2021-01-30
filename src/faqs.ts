@@ -72,4 +72,19 @@ export default [{
   id: 'b7a4',
   name: 'What are the alternatives to CORS?',
   related: ['c3f4', 'b7a4']
+}, {
+  id: 'bb30',
+  name: 'I can’t change the server and it isn’t using CORS. What else can I do?'
+}, {
+  id: 'e96b',
+  name: 'Does using HTTPS have any effect on CORS?',
+  related: ['cdc8']
+}, {
+  id: 'f782',
+  name: 'Does CORS work with localhost?',
+  related: ['e96b', 'cdc8']
+}, {
+  id: 'a8d2',
+  name: 'I’ve tried to implement CORS but it isn’t working. What should I do next?',
+  related: ['ea74', 'cdc8', 'b1b0', 'a313', 'b56b']
 }]

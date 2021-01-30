@@ -30,7 +30,9 @@ $t-color: #9dab9f;
   --text-color: #{$t-color};
   --section-hover-text: #{transparentize(lighten($bg-2, 42), .12)};
   --code-background: #{saturate(darken($s-bg, 3), 10)};
-  --code-inline: #BADA55;
+  --code-inline-color: #BADA55;
+  --code-inline-bg: rgba(255,255,255,.07);
+  --code-inline-outline: rgba(255,255,255,.12);
   .stackoverflow-light {
     --layout-divider: #ccc;
     --soft-divider: #eee;
@@ -53,7 +55,9 @@ $t-color: #9dab9f;
     --text-color: rgb(38 53 49);
     --section-hover-text: rgb(38 53 49);
     --code-background: initial;
-    --code-inline: var(--links-2);
+    --code-inline-color: var(--links-2);
+    --code-inline-bg: rgba(0,0,0,.04);
+    --code-inline-outline: rgba(0,0,0,.08);
   }
   .vuetiful {
     --layout-divider: #ddd;
@@ -77,6 +81,8 @@ $t-color: #9dab9f;
     --text-color: rgb(38 53 49);
     --section-hover-text: rgb(38 53 49);
     --code-background: initial;
-    --code-inline: var(--nav-links-2);
+    --code-inline-color: var(--nav-links-2);
+    --code-inline-bg: rgba(44, 62, 80, .07);
+    --code-inline-outline: rgba(44, 62, 80, .12);
   }
 }

@@ -105,7 +105,4 @@ export default defineComponent({
 .expand-leave-to {
   height: 0;
 }
-.answer-body code:not(.hljs) {
-  color: var(--code-inline);
-}
 </style>
