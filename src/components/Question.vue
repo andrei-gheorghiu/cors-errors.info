@@ -1,6 +1,6 @@
 <template>
   <section :id="faq.id"
-           :class="{ expanded }"
+           :class="{ active: isActive }"
            itemscope
            itemprop="mainEntity"
            itemtype="https://schema.org/Question">
@@ -47,7 +47,7 @@ export default defineComponent({
   setup (props) {
     const store = useStore()
     const source = ref('')
-    const expanded = computed(() => store.state.activeIndex === props.faq.id)
+    const isActive = computed(() => store.state.activeIndex === props.faq.id)
     const afterEnter = (element: HTMLElement) => {
       if (element.classList.contains('answer-body')) {
         element.style.height = 'auto'
@@ -113,7 +113,7 @@ export default defineComponent({
     }]
     return {
       source,
-      expanded,
+      isActive,
       plugins,
       afterEnter,
       leave,
@@ -145,9 +145,6 @@ export default defineComponent({
   height: 0;
 }
 .answer-body code:not(.hljs) {
-  color: #BADA55;
-  .stackoverflow-light & {
-    color: var(--links-2);
-  }
+  color: var(--code-inline);
 }
 </style>

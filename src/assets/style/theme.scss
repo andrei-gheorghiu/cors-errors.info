@@ -1,0 +1,82 @@
+
+$bg-1: #13a2c3b5;
+$bg-2: rgba(14, 236, 210, 0.67);
+$bg-3: #bce35d;
+$bg-4: #8f6b94;
+$s-bg: #151d29;
+$f-1: #7cc47f;
+$f-2: #149498;
+$f-light: #f7c42c;
+$t-color: #9dab9f;
+#app {
+  --layout-divider: #{transparentize($s-bg, .7)};
+  --soft-divider: #{transparentize($s-bg, .9)};
+  --page-overlay: rgba(0, 0, 0, .12);
+  --navigation-bg: rgba(0,0,0,.12);
+  --body-bg-1: #{$bg-1};
+  --body-bg-2: #{$bg-2};
+  --body-bg-3: #{$bg-3};
+  --body-bg-4: #{$bg-4};
+  --section-bg-1: #{$s-bg};
+  --section-bg-2: #{darken($s-bg, 3)};
+  --section-bg-3: #{darken($s-bg, 5)};
+  --section-bg-4: #{desaturate($s-bg, 5)};
+  --links-1: #{$f-1};
+  --links-2: #{transparentize($f-1, .42)};
+  --nav-links-1: #{$f-light};
+  --nav-links-2: #{darken($f-light, 5)};
+  --scrollbar-thumb: #{$f-2};
+  --scrollbar-bg: #{darken($s-bg, 5)};
+  --text-color: #{$t-color};
+  --section-hover-text: #{transparentize(lighten($bg-2, 42), .12)};
+  --code-background: #{saturate(darken($s-bg, 3), 10)};
+  --code-inline: #BADA55;
+  .stackoverflow-light {
+    --layout-divider: #ccc;
+    --soft-divider: #eee;
+    --page-overlay: rgba(234, 232, 236, .95);
+    --navigation-bg: rgba(255,255,255,.76);
+    --body-bg-1: #eee;
+    --body-bg-2: #999;
+    --body-bg-3: #ddd;
+    --body-bg-4: #ccc;
+    --section-bg-1: #ffffff;
+    --section-bg-2: #f8f8f8;
+    --section-bg-3: #ffffff;
+    --section-bg-4: #ccc;
+    --links-1: #069;
+    --links-2: #c30;
+    --nav-links-1: #c30;
+    --nav-links-2: #{lighten(#c30, 7)};
+    --scrollbar-thumb: #c30;
+    --scrollbar-bg: transparent;
+    --text-color: rgb(38 53 49);
+    --section-hover-text: rgb(38 53 49);
+    --code-background: #f3f4f5;
+    --code-inline: var(--links-2);
+  }
+  .vuetiful {
+    --layout-divider: #ddd;
+    --soft-divider: #eee;
+    --page-overlay: rgba(234, 234, 234, .95);
+    --navigation-bg: rgba(255,255,255,.76);
+    --body-bg-1: #fff;
+    --body-bg-2: #fff;
+    --body-bg-3: #fff;
+    --body-bg-4: #fff;
+    --section-bg-1: #ffffff;
+    --section-bg-2: #f8f8f8;
+    --section-bg-3: #ffffff;
+    --section-bg-4: #ccc;
+    --links-1: #2c3e50;
+    --links-2: #42b983;
+    --nav-links-1: #2c3e50;
+    --nav-links-2: #3eaf7c;
+    --scrollbar-thumb: #3eaf7c;
+    --scrollbar-bg: transparent;
+    --text-color: rgb(38 53 49);
+    --section-hover-text: rgb(38 53 49);
+    --code-background: #f0f3f6;
+    --code-inline: var(--nav-links-2);
+  }
+}

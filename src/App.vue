@@ -1,5 +1,5 @@
 <template>
-  <div class="app-wrapper" :class="{ 'stackoverflow-light': !darkMode }">
+  <div class="app-wrapper" :class="[currentTheme]">
     <header class="header">
       <navbar />
     </header>
@@ -33,8 +33,8 @@ export default defineComponent({
   },
   setup () {
     const store = useStore()
-    const darkMode = computed(() => store.state.darkMode)
-    return { darkMode }
+    const currentTheme = computed(() => store.state.activeTheme)
+    return { currentTheme }
   }
 })
 </script>

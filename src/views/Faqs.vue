@@ -39,7 +39,7 @@ export default defineComponent({
     const store = useStore()
     const router = useRouter()
     const hash = computed(() => router.currentRoute.value.hash)
-    const darkMode = computed(() => store.state.darkMode)
+    const activeTheme = computed(() => store.state.activeTheme)
     const questions = computed(() => store.state.questions)
     const activeQuestion = computed(() => store.getters.activeQuestion)
     watchEffect(() => {
@@ -47,7 +47,7 @@ export default defineComponent({
         store.commit('setActiveIndex', hash.value.slice(1))
       }
     })
-    watch(() => darkMode.value, () => {
+    watch(() => activeTheme.value, () => {
       scrollToHash(hash.value)
     })
     watchEffect(() => {

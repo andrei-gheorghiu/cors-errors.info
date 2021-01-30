@@ -4,14 +4,14 @@ import questions, { Faq } from '@/faqs'
 export interface State {
   questions: Faq[];
   activeIndex: string | null;
-  darkMode: boolean
+  activeTheme: string
 }
 
 const store = createStore<State>({
   state: {
     questions,
     activeIndex: null,
-    darkMode: false
+    activeTheme: 'stackoverflow-light'
   },
   mutations: {
     setActiveIndex (state: State, id: string) {
@@ -20,8 +20,8 @@ const store = createStore<State>({
     setQuestions (state: State, questions: Faq[]) {
       state.questions = questions
     },
-    setDarkMode (state: State, mode: boolean) {
-      state.darkMode = mode
+    setActiveTheme (state: State, theme: string) {
+      state.activeTheme = theme
     }
   },
   actions: {

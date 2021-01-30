@@ -1,7 +1,9 @@
 <template>
-  <theme-switch name="theme"
-                role="switch"
-                v-model:darkMode="darkMode" />
+  <div class="navbar">
+    <theme-switch name="theme"
+                  role="switch"
+                  v-model:activeTheme="activeTheme" />
+  </div>
 </template>
 <script lang="ts">
 import { computed, defineComponent } from 'vue'
@@ -14,12 +16,12 @@ export default defineComponent({
   },
   setup () {
     const store = useStore()
-    const darkMode = computed({
-      get () { return store.state.darkMode },
-      set (val) { store.commit('setDarkMode', val) }
+    const activeTheme = computed({
+      get () { return store.state.activeTheme },
+      set (val) { store.commit('setActiveTheme', val) }
     })
     return {
-      darkMode
+      activeTheme
     }
   }
 })
