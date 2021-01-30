@@ -10,7 +10,7 @@ $bg-4: #8f6b94;
 $s-bg: #151d29;
 $f-1: #7cc47f;
 $f-2: #149498;
-$f-light: #ac881c;
+$f-light: #f7c42c;
 $t-color: #9dab9f;
 
 .app-wrapper {
@@ -72,7 +72,7 @@ $t-color: #9dab9f;
     width: 270px;
     flex-grow: 0;
     border-right: 1px solid  var(--layout-divider);
-    background-color: var(--s-bg);
+    background-color: var(--section-bg-1);
     nav {
       padding: 1rem 0;
       > a {
@@ -84,13 +84,13 @@ $t-color: #9dab9f;
           line-height: 1.2;
           padding: .5rem 1rem;
           font-size: 14px;
-          color: var(--f-1);
+          color: var(--links-1);
           &:hover, &.active {
-            color: var(--f-light);
+            color: var(--nav-links-1);
           }
           &.active {
-            background-color: var(--f-light);
-            color: var(--s-bg);
+            background-color: var(--nav-links-1);
+            color: var(--section-bg-1);
             pointer-events: none;
           }
         }
@@ -130,7 +130,7 @@ $t-color: #9dab9f;
     height: 100vh;
   }
   .ps__thumb-x, .ps__thumb-y {
-    background-color:var(--f-2);
+    background-color:var(--scrollbar-thumb);
   }
   .ps .ps__rail-x:hover,
   .ps .ps__rail-y:hover,
@@ -153,16 +153,16 @@ $t-color: #9dab9f;
     overflow: hidden;
     padding: .5rem 1.5rem 0;
     margin: 4rem 0;
-    background-color: var(--s-bg);
-    color: var(--t-color);
+    background-color: var(--section-bg-1);
+    color: var(--text-color);
     box-shadow: 0 1px 5px 0 rgba(0, 0, 0, .1), 0 2px 2px 0 rgba(0, 0, 0, .07), 0 3px 1px -2px rgba(0, 0, 0, .06);
     a {
       transition: color .25s cubic-bezier(.4,0,.2,1);
-      color: var(--f-1);
-      border-bottom: 1px dotted var(--f-3);
+      color: var(--links-1);
+      border-bottom: 1px dotted var(--links-2);
       text-decoration: none;
       &:hover {
-        color: var(--f-light);
+        color: var(--nav-links-1);
       }
     }
     h3 {
@@ -173,21 +173,21 @@ $t-color: #9dab9f;
         font-weight: bold;
         padding: 1.5rem;
         display: block;
-        background-color: var(--s-bg-2);
+        background-color: var(--section-bg-2);
         border-bottom: 1px solid var(--layout-divider);
       }
     }
     pre .hljs {
       padding: 1rem;
       border-radius: 6px;
-      background-color: var(--pre-hljs);
+      background-color: var(--code-background);
       max-height: 450px;
     }
     &:hover {
       box-shadow: 0 5px 5px -3px rgba(0, 0, 0, .1), 0 8px 10px 1px rgba(0, 0, 0, .07), 0 3px 14px 2px rgba(0, 0, 0, .06);
     }
     &:hover {
-      background-color: var(--s-bg-3);
+      background-color: var(--section-bg-3);
     }
   }
   /*.sidebar {
@@ -202,7 +202,7 @@ $t-color: #9dab9f;
     box-shadow: 0 1px 5px 0 rgba(0, 0, 0, .1), 0 2px 2px 0 rgba(0, 0, 0, .07), 0 3px 1px -2px rgba(0, 0, 0, .06);
   }*/
   .related-questions {
-    border-top: 1px solid var(--s-bg-4);
+    border-top: 1px solid var(--section-bg-4);
     padding-top: 0;
     h4 {
       margin: .75rem 0 0;
@@ -237,48 +237,46 @@ $t-color: #9dab9f;
   --layout-divider: #{transparentize($s-bg, .7)};
   --page-overlay: rgba(0, 0, 0, .12);
   --navigation: rgba(0,0,0,.12);
-  --bg-1: #{$bg-1};
-  --bg-2: #{$bg-2};
-  --bg-3: #{$bg-3};
-  --bg-4: #{$bg-4};
-  --s-bg: #{$s-bg};
-  --s-bg-2: #{darken($s-bg, 3)};
-  --s-bg-3: #{darken($s-bg, 5)};
-  --s-bg-4: #{desaturate($s-bg, 5)};
-  --sb-bg: rgba(0,0,0,.21);
-  --f-1: #{$f-1};
-  --f-2: #{$f-2};
-  --f-3: #{transparentize($f-1, .42)};
-  --f-light: #{$f-light};
-  --f-light-2: #{darken($f-light, 5)};
-  --t-color: #{$t-color};
-  --pre-hljs: #{saturate($s-bg, 5)};
+  --body-bg-1: #{$bg-1};
+  --body-bg-2: #{$bg-2};
+  --body-bg-3: #{$bg-3};
+  --body-bg-4: #{$bg-4};
+  --section-bg-1: #{$s-bg};
+  --section-bg-2: #{darken($s-bg, 3)};
+  --section-bg-3: #{darken($s-bg, 5)};
+  --section-bg-4: #{desaturate($s-bg, 5)};
+  --links-1: #{$f-1};
+  --links-2: #{transparentize($f-1, .42)};
+  --nav-links-1: #{$f-light};
+  --nav-links-2: #{darken($f-light, 5)};
+  --scrollbar-thumb: #{$f-2};
+  --text-color: #{$t-color};
+  --code-background: #{saturate($s-bg, 5)};
   .stackoverflow-light {
     --layout-divider: #ccc;
     --page-overlay: rgba(234, 232, 236, .95);
     --navigation: rgba(255,255,255,.42);
-    --bg-1: #eee;
-    --bg-2: #eee;
-    --bg-3: #ddd;
-    --bg-4: #ccc;
-    --s-bg: #ffffff;
-    --s-bg-2: #ffffff;
-    --s-bg-3: #ffffff;
-    --s-bg-4: #ccc;
-    --sb-bg: rgba(255,255,255,.65);
-    --f-1: #64564f;
-    --f-2: #64564f;
-    --f-3: #c30;
-    --f-light: #c30;
-    --f-light-2: darken(#c30, 5);
-    --t-color: rgb(38 53 49);
-    --pre-hljs: #f3f4f5;
+    --body-bg-1: #eee;
+    --body-bg-2: #999;
+    --body-bg-3: #ddd;
+    --body-bg-4: #ccc;
+    --section-bg-1: #ffffff;
+    --section-bg-2: #ffffff;
+    --section-bg-3: #ffffff;
+    --section-bg-4: #ccc;
+    --links-1: #069;
+    --links-2: #c30;
+    --nav-links-1: #c30;
+    --nav-links-2: darken(#c30, 5);
+    --scrollbar-thumb: #64564f;
+    --text-color: rgb(38 53 49);
+    --code-background: #f3f4f5;
   }
 
   //background: radial-gradient(ellipse at top left, $bg-1, transparent),
   //radial-gradient(ellipse at bottom right, $bg-2, transparent);
-  background: radial-gradient(ellipse at top right, var(--bg-1), var(--bg-2)),
-  radial-gradient(ellipse at bottom right, var(--bg-3), var(--bg-4)), var(--s-bg);
+  background: radial-gradient(ellipse at top right, var(--body-bg-1), var(--body-bg-2)),
+  radial-gradient(ellipse at bottom right, var(--body-bg-3), var(--body-bg-4)), var(--section-bg-1);
 }
 body {
   margin: 0;

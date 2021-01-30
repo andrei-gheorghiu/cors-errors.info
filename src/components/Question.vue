@@ -147,7 +147,7 @@ export default defineComponent({
 .answer-body code:not(.hljs) {
   color: #BADA55;
   .stackoverflow-light & {
-    color: var(--f-3);
+    color: var(--links-2);
   }
 }
 </style>

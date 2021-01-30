@@ -75,22 +75,22 @@ $switch-size: calc(#{$switch-container-width} / 2);
 }
 
 .input:checked + .switch {
-  background-color: var(--f-3);
+  background-color: var(--links-2);
 }
 
 .input:checked + .switch::before {
-  border-color: var(--f-3);
+  border-color: var(--links-2);
   transform: translateX(
       calc(#{$switch-container-width} - #{$switch-size})
   );
 }
 
 .input:focus + .switch::before {
-  border-color: var(--f-3);
+  border-color: var(--links-2);
 }
 
 .input:focus:checked + .switch::before {
-  border-color: var(--f-3);
+  border-color: var(--links-2);
 }
 
 .input:disabled + .switch {
