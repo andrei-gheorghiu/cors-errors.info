@@ -11,7 +11,7 @@
          itemprop="acceptedAnswer"
          itemtype="https://schema.org/Answer"
          class="answer-body">
-      <div itemprop="text">
+      <div itemprop="text" @click="scrollCheck">
         <vue-markdown-it :source="source" :plugins="plugins" />
       </div>
       <div class="related-questions" v-if="faq.related">
@@ -35,6 +35,7 @@ import RelatedLink from '@/components/RelatedLink.vue'
 import { useStore } from '@/store'
 import gsap from 'gsap'
 import ScrollToPlugin from 'gsap/ScrollToPlugin'
+import { useRouter } from 'vue-router'
 gsap.registerPlugin(ScrollToPlugin)
 
 export default defineComponent({
@@ -46,62 +47,24 @@ export default defineComponent({
   },
   setup (props) {
     const store = useStore()
+    const router = useRouter()
     const source = ref('')
     const isActive = computed(() => store.state.activeIndex === props.faq.id)
-    const afterEnter = (element: HTMLElement) => {
-      if (element.classList.contains('answer-body')) {
-        element.style.height = 'auto'
-      }
-    }
-    const enter = (element: HTMLElement) => {
-      if (element.classList.contains('answer-body')) {
-        const { width } = getComputedStyle(element)
-        element.style.width = width
-        element.style.position = 'absolute'
-        element.style.visibility = 'hidden'
-        element.style.height = 'auto'
-        nextTick(() => {
-          const { height } = getComputedStyle(element)
-          element.style.removeProperty('width')
-          element.style.position = 'relative'
-          element.style.visibility = 'visible'
-          element.style.height = '0px'
-
-          // eslint-disable-next-line no-unused-expressions
-          getComputedStyle(element).height
-
-          requestAnimationFrame(() => {
-            element.style.height = height
-            setTimeout(() => {
-              const target = document.querySelector(`#${store.state.activeIndex}`)
-              if (target instanceof HTMLElement) {
-                gsap.to(target.closest('.ps'),
-                  {
-                    duration: 0.35,
-                    scrollTo: target
-                  })
-              }
-            }, 420)
-          })
-        })
-      }
-    }
-    const leave = (element: HTMLElement) => {
-      if (element.classList.contains('answer-body')) {
-        const { height } = getComputedStyle(element)
-
-        element.style.height = height
-
-        // eslint-disable-next-line no-unused-expressions
-        getComputedStyle(element).height
-
-        requestAnimationFrame(() => {
-          element.style.height = '0'
-        })
-      }
-    }
-    const onClick = (e: MouseEvent) => {
+    const onClick = () => {
       store.commit('setActiveIndex', props.faq.id)
+    }
+    const scrollCheck = (e: MouseEvent) => {
+      const t = e.target
+      if (t instanceof HTMLAnchorElement) {
+        const ending = t.href.split('/')[t.href.split('/').length - 1]
+        if (ending.length && ending.split('#').length === 2) {
+          const [faq, id] = ending.split('#')
+          if (faq.toLowerCase() === 'faq') {
+            e.preventDefault()
+            router.replace({ path: '/faq', hash: `#${id}` })
+          }
+        }
+      }
     }
     axios.get(`/faq/${props.faq.id}.md`)
       .then(r => {
@@ -115,10 +78,8 @@ export default defineComponent({
       source,
       isActive,
       plugins,
-      afterEnter,
-      leave,
-      enter,
-      onClick
+      onClick,
+      scrollCheck
     }
   }
 })
