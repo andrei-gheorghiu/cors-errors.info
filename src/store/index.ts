@@ -1,15 +1,17 @@
 import { createStore } from 'vuex'
-import { Faq } from '@/faqs'
+import questions, { Faq } from '@/faqs'
 
 export interface State {
   questions: Faq[];
   activeIndex: string | null;
+  darkMode: boolean
 }
 
-export default createStore({
+const store = createStore<State>({
   state: {
-    questions: [],
-    activeIndex: null
+    questions,
+    activeIndex: null,
+    darkMode: false
   },
   mutations: {
     setActiveIndex (state: State, id: string) {
@@ -17,6 +19,9 @@ export default createStore({
     },
     setQuestions (state: State, questions: Faq[]) {
       state.questions = questions
+    },
+    setDarkMode (state: State, mode: boolean) {
+      state.darkMode = mode
     }
   },
   actions: {
@@ -25,3 +30,11 @@ export default createStore({
     activeQuestion: (state: State) => state.questions.find(f => f.id === state.activeIndex)
   }
 })
+
+export default store
+
+export type StoreType = typeof store
+
+export function useStore () {
+  return store
+}

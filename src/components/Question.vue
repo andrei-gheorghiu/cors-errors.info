@@ -5,53 +5,37 @@
            itemprop="mainEntity"
            itemtype="https://schema.org/Question">
     <h3>
-      <a :href="`faq#${faq.id}`" @click.prevent="onClick">
-        <span itemprop="name" v-text="faq.name" />
-      </a>
+      <router-link :to="{path: '/faq', hash: `#${faq.id}`}" v-text="faq.name" itemprop="name" />
     </h3>
-    <transition name="expand"
-                mode="out-in"
-                @after-enter="afterEnter"
-                @enter="enter"
-                @leave="leave">
-      <div v-if="expanded"
-           :key="1"
-           itemscope
-           itemprop="acceptedAnswer"
-           itemtype="https://schema.org/Answer"
-           class="answer-body">
-        <div itemprop="text">
-          <vue-markdown-it :source="source" :plugins="plugins" />
-        </div>
-        <div class="related-questions" v-if="faq.related">
-          <h4>Related</h4>
-          <ul>
-            <related-link v-for="related in faq.related"
-                          :identifier="related"
-                          :key="related" />
-          </ul>
-        </div>
+    <div itemscope
+         itemprop="acceptedAnswer"
+         itemtype="https://schema.org/Answer"
+         class="answer-body">
+      <div itemprop="text">
+        <vue-markdown-it :source="source" :plugins="plugins" />
       </div>
-      <div v-else
-           :key="2"
-           itemscope
-           itemprop="acceptedAnswer"
-           itemtype="https://schema.org/Answer"
-           class="sr-only">
-        <div itemprop="text">
-          <vue-markdown-it :source="source" :plugins="plugins" />
-        </div>
+      <div class="related-questions" v-if="faq.related">
+        <h4>Related</h4>
+        <ul>
+          <related-link v-for="related in faq.related"
+                        :identifier="related"
+                        :key="related" />
+        </ul>
       </div>
-    </transition>
+    </div>
   </section>
 </template>
 
 <script lang="ts">
 import HighlightJs from 'markdown-it-highlightjs'
-import { defineComponent, ref, nextTick } from 'vue'
+import { defineComponent, ref, nextTick, computed } from 'vue'
 import axios from 'axios'
 import VueMarkdownIt from 'vue3-markdown-it'
 import RelatedLink from '@/components/RelatedLink.vue'
+import { useStore } from '@/store'
+import gsap from 'gsap'
+import ScrollToPlugin from 'gsap/ScrollToPlugin'
+gsap.registerPlugin(ScrollToPlugin)
 
 export default defineComponent({
   name: 'Question',
@@ -61,8 +45,9 @@ export default defineComponent({
     VueMarkdownIt
   },
   setup (props) {
+    const store = useStore()
     const source = ref('')
-    const expanded = ref(false)
+    const expanded = computed(() => store.state.activeIndex === props.faq.id)
     const afterEnter = (element: HTMLElement) => {
       if (element.classList.contains('answer-body')) {
         element.style.height = 'auto'
@@ -87,6 +72,16 @@ export default defineComponent({
 
           requestAnimationFrame(() => {
             element.style.height = height
+            setTimeout(() => {
+              const target = document.querySelector(`#${store.state.activeIndex}`)
+              if (target instanceof HTMLElement) {
+                gsap.to(target.closest('.ps'),
+                  {
+                    duration: 0.35,
+                    scrollTo: target
+                  })
+              }
+            }, 420)
           })
         })
       }
@@ -106,8 +101,7 @@ export default defineComponent({
       }
     }
     const onClick = (e: MouseEvent) => {
-      expanded.value = !expanded.value
-      console.log(e.target)
+      store.commit('setActiveIndex', props.faq.id)
     }
     axios.get(`/faq/${props.faq.id}.md`)
       .then(r => {

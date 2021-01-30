@@ -1,6 +1,6 @@
 <template>
   <li>
-    <a :href="`/faq#${identifier}`" v-text="name" @click.prevent="activateQuestion" />
+    <router-link :to="{path: '/faq', hash: `#${identifier}`}" v-text="name" />
   </li>
 </template>
 

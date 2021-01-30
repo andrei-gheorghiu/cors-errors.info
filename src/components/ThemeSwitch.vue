@@ -13,7 +13,7 @@ export default defineComponent({
   name: 'ThemeSwitch',
   props: {
     darkMode: {
-      type: String
+      type: Boolean
     }
   },
   emits: ['update:darkMode']
