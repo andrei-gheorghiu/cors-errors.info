@@ -30,7 +30,7 @@ export default defineComponent({
         name: 'Flow Overstack'
       }, {
         class: 'wild-duck',
-        name: 'Depressed'
+        name: 'Chemical lobster'
       }, {
         class: 'vuetiful',
         name: 'Vuetiful'

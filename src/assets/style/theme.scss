@@ -12,7 +12,7 @@ $t-color: #9dab9f;
   --layout-divider: #{transparentize($s-bg, .7)};
   --soft-divider: #{transparentize($s-bg, .9)};
   --page-overlay: rgba(0, 0, 0, .12);
-  --navigation-bg: rgba(0,0,0,.12);
+  --navigation-bg: rgb(14 80 78 / 42%);
   --body-bg-1: #{$bg-1};
   --body-bg-2: #{$bg-2};
   --body-bg-3: #{$bg-3};
