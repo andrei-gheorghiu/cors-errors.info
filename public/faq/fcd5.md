@@ -4,7 +4,7 @@ Note that `withCredentials` is only required for specific forms of ‘credential
 
 If you’re using `XMLHttpRequest` directly it would be set as follows:
 
-```
+```js
     const httpRequest = new XMLHttpRequest();
     httpRequest.withCredentials = true;
 ```
@@ -13,7 +13,7 @@ It can be set at any point prior to calling `httpRequest.send()`.
 
 For making requests with `fetch` the equivalent of `withCredentials` is setting `credentials` to `'include'`:
 
-```
+```js
     fetch(url, {
       credentials: 'include'
     });
@@ -21,7 +21,7 @@ For making requests with `fetch` the equivalent of `withCredentials` is setting 
 
 With **jQuery** the `withCredentials` flag can be set using:
 
-```
+```js
     jQuery.ajax({
       // ...other settings...
 
@@ -33,7 +33,7 @@ With **jQuery** the `withCredentials` flag can be set using:
 
 For **axios**:
 
-```
+```js
     axios.post(url, body, {
       withCredentials: true
     });

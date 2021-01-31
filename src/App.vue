@@ -12,7 +12,7 @@
       </main>
     </div>
     <footer class="footer">
-      <div>
+      <div class="copyright">
         <code>&copy; cors-errors.info&trade; &mdash; {{ new Date().getFullYear() }}</code>
       </div>
     </footer>

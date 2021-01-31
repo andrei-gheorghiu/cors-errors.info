@@ -13,7 +13,7 @@
 import Question from '@/components/Question.vue'
 import { computed, defineComponent, watchEffect, watch } from 'vue'
 import { useStore } from '@/store'
-import faqs from '@/faqs'
+import faqs from '../../public/faq'
 import { useRouter } from 'vue-router'
 import gsap from 'gsap'
 

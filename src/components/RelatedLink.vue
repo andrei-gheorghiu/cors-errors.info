@@ -7,7 +7,7 @@
 <script lang="ts">
 import { defineComponent, computed } from 'vue'
 import { useStore } from 'vuex'
-import { Faq } from '@/faqs'
+import { Faq } from '../../public/faq'
 export default defineComponent({
   name: 'RelatedLink',
   props: {

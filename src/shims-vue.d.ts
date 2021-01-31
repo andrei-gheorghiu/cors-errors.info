@@ -6,4 +6,5 @@ declare module '*.vue' {
 }
 
 declare module 'markdown-it-highlightjs'
+declare module 'markdown-it-attrs'
 declare module 'vue3-markdown-it'

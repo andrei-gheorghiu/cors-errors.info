@@ -1,5 +1,5 @@
 import { createStore } from 'vuex'
-import questions, { Faq } from '@/faqs'
+import questions, { Faq } from '../../public/faq'
 
 export interface State {
   questions: Faq[];

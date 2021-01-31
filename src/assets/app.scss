@@ -91,13 +91,34 @@ body {
     bottom: 0;
     display: flex;
     flex-direction: column;
-    > div {
+    .copyright {
       flex-grow: 1;
       display: flex;
-      padding-left: 1rem;
       align-items: center;
-      color: var(--text-color);
+      color: var(--links-2);
+      padding-left: calc(269px + 1rem);
     }
+  }
+
+  $err-quote: #f03c00;
+  .error-quote, .warn-quote {
+    border: 1px dotted var(--error-quote-color);
+    padding: 1em 40px;
+    margin: 0;
+    background-color: var(--error-quote-bg);
+    color: var(--error-quote-color);
+  }
+  .warn-quote {
+    border-color: #f90;
+    background-color: #ff990011;
+    color: #f90;
+    &:not(._._) {
+      outline: none;
+      border-radius: 2px;
+    }
+  }
+  .warn-quote > * {
+    color: #c60;
   }
 
   .page-wrapper {
@@ -217,17 +238,43 @@ body {
     }
   }
 
-  .answer-body code:not(.hljs) {
-    color: var(--code-inline-color);
-    background-color: var(--code-inline-bg);
-    outline: 1px solid var(--code-inline-outline);
-    padding: 0 3px;
+  .answer-body {
+    code:not(.hljs) {
+      color: var(--code-inline-color);
+      background-color: var(--code-inline-bg);
+      outline: 1px solid var(--code-inline-outline);
+      padding: 0 3px;
+    }
+    h4 {
+      display: flex;
+      align-items: center;
+      > * {
+        flex: 0 1 auto;
+        line-height: 1.2em;
+      }
+      code {
+        margin-left: .5rem;
+      }
+      &:before, &:after {
+        flex-basis: 2rem;
+        content: '';
+        height: 0;
+        border-bottom: 1px solid var(--layout-divider);
+      }
+      &:before {
+        margin-right: 1rem;
+      }
+      &:after {
+        flex-grow: 1;
+        margin-left: 1rem;
+      }
+    }
   }
 
   section {
     transition: all .25s cubic-bezier(.4, 0, .2, 1);
     overflow: hidden;
-    padding: .5rem 1.5rem 0;
+    padding: .5rem 1.5rem;
     margin: 4rem 0;
     background-color: var(--section-bg-1);
     color: var(--text-color);
@@ -315,7 +362,6 @@ body {
   }
 
   .related-questions {
-    border-top: 1px solid var(--section-bg-4);
     padding-top: 0;
 
     h4 {

@@ -12,7 +12,7 @@
          itemtype="https://schema.org/Answer"
          class="answer-body">
       <div itemprop="text" @click="scrollCheck">
-        <vue-markdown-it :source="source" :plugins="plugins" />
+        <vue-markdown-it :source="source" :plugins="plugins" :html="true" />
       </div>
       <div class="related-questions" v-if="faq.related">
         <h4>Related</h4>
@@ -27,7 +27,8 @@
 </template>
 
 <script lang="ts">
-import HighlightJs from 'markdown-it-highlightjs'
+import MiHighlightJs from 'markdown-it-highlightjs'
+import MiAttrs from 'markdown-it-attrs'
 import { defineComponent, ref, nextTick, computed } from 'vue'
 import axios from 'axios'
 import VueMarkdownIt from 'vue3-markdown-it'
@@ -72,7 +73,17 @@ export default defineComponent({
       })
 
     const plugins = [{
-      plugin: HighlightJs
+      plugin: MiHighlightJs,
+      options: {
+        register: {
+          shell: require('highlight.js/lib/languages/shell'),
+          bash: require('highlight.js/lib/languages/bash'),
+          cpp: require('highlight.js/lib/languages/cpp'),
+          asciidoc: require('highlight.js/lib/languages/asciidoc')
+        }
+      }
+    }, {
+      plugin: MiAttrs
     }]
     return {
       source,
@@ -81,6 +92,14 @@ export default defineComponent({
       onClick,
       scrollCheck
     }
+  },
+  mounted () {
+    fetch(require('../assets/external.svg'))
+      .then(r => { console.log(r); return r })
+      .then(r => r.text())
+      .then(r => {
+        const s = 'data:image/svg+xml;base64,' + encodeURIComponent(r)
+      })
   }
 })
 </script>
