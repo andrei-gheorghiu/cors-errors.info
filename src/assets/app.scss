@@ -275,9 +275,11 @@ body {
       bottom: -.1rem;
       position: relative;
     }
-    .error-quote > p {
-      padding: 0;
-      margin: 0;
+    .error-quote, .warn-quote{
+      > p {
+        padding: 0;
+        margin: 0;
+      }
     }
   }
 

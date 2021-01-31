@@ -1,6 +1,6 @@
 If you’re using the `fetch` API then you might have come across this message in Chrome:
 
-> If an opaque response serves your needs, set the request's mode to 'no-cors' to fetch the resource with CORS disabled.{.error-quote}
+> If an opaque response serves your needs, set the request's mode to 'no-cors' to fetch the resource with CORS disabled.{.warn-quote}
 
 It’s shown at the end of some CORS error messages.
 
