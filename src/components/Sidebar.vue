@@ -8,7 +8,7 @@
                      tag="div"
                      v-slot="{ href, route, navigate }">
           <a :href="href"
-             :class="{ active: route.hash === currentHash }"
+             :class="{ active: route.hash === currentHash || activeIndex === faq.id }"
              v-text="faq.name"
              @click="navigate"/>
         </router-link>
@@ -26,8 +26,9 @@ export default defineComponent({
     const store = useStore()
     const router = useRouter()
     const currentHash = computed(() => router.currentRoute.value.hash)
+    const activeIndex = computed(() => store.state.activeIndex)
     const questions = store.state.questions
-    return { questions, currentHash }
+    return { questions, currentHash, activeIndex }
   }
 })
 </script>

@@ -10,7 +10,7 @@ export interface State {
 const store = createStore<State>({
   state: {
     questions,
-    activeIndex: null,
+    activeIndex: 'e9f4',
     activeTheme: 'vuetiful'
   },
   mutations: {

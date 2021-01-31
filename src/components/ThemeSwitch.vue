@@ -13,7 +13,7 @@
 </template>
 <script lang="ts">
 import { defineComponent } from 'vue'
-import Geek from './Geek.vue'
+import Geek from './GeekIcon.vue'
 export default defineComponent({
   name: 'ThemeSwitch',
   components: {

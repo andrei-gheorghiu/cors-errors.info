@@ -9,19 +9,17 @@
                     role="listitem"/>
         </template>
         <template #fallback>
-          <div class="loader">
-            loading answers...
-          </div>
+          <loader />
         </template>
       </Suspense>
     </div>
-
   </div>
 </template>
 
 <script lang="ts">
 import Question from '@/components/Question.vue'
-import { computed, defineComponent, watchEffect, watch, nextTick } from 'vue'
+import Loader from '@/components/Loader.vue'
+import { computed, defineComponent, watchEffect, watch } from 'vue'
 import { useStore } from '@/store'
 import { useRouter } from 'vue-router'
 import { useGsap } from '@/plugins/gsap'
@@ -29,7 +27,8 @@ import { useGsap } from '@/plugins/gsap'
 export default defineComponent({
   name: 'Faqs',
   components: {
-    Question
+    Question,
+    Loader
   },
   setup () {
     const store = useStore()
@@ -42,7 +41,7 @@ export default defineComponent({
           gsap.to(target.closest('.ps'),
             {
               duration: 0.65,
-              scrollTo: { y: target, offsetY: 98 }
+              scrollTo: { y: target, offsetY: 93 }
             })
         }
       }
@@ -69,7 +68,3 @@ export default defineComponent({
   }
 })
 </script>
-
-<style scoped>
-
-</style>
