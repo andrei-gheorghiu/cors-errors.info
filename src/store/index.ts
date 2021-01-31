@@ -11,7 +11,7 @@ const store = createStore<State>({
   state: {
     questions,
     activeIndex: null,
-    activeTheme: 'stackoverflow-light'
+    activeTheme: 'vuetiful'
   },
   mutations: {
     setActiveIndex (state: State, id: string) {
