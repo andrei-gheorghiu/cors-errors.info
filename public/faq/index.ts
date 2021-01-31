@@ -132,4 +132,8 @@ export default [{
   id: 'ffcc',
   name: 'What are the security implications of CORS?',
   related: ['fcd5', 'd926', 'fe2a']
+}, {
+  id: 'dfdb',
+  name: 'What is an opaque response?',
+  related: ['e9b8']
 }]

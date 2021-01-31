@@ -131,5 +131,5 @@ As we’ve already discussed, allowing requests from anywhere is fine under cert
 
 You might find these useful:
 
-*   [w3c.github.io](https://w3c.github.io/webappsec-cors-for-developers/){.external}{target=_blank}
-*   [portswigger.net](https://portswigger.net/research/exploiting-cors-misconfigurations-for-bitcoins-and-bounties){.external}{target=_blank}
+*   [w3c.github.io](https://w3c.github.io/webappsec-cors-for-developers/){.icon-cors-external target=_blank}
+*   [portswigger.net](https://portswigger.net/research/exploiting-cors-misconfigurations-for-bitcoins-and-bounties){.icon-cors-external target=_blank}

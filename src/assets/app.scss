@@ -1,5 +1,6 @@
-@import "./style/theme";
+@import "style/themes";
 @import "./hljs/stackoverflow-dark";
+@import "fonts";
 
 .wild-duck {
   pre .hljs {
@@ -268,6 +269,15 @@ body {
         flex-grow: 1;
         margin-left: 1rem;
       }
+    }
+    .icon-cors-external:before {
+      margin-right: .35rem;
+      bottom: -.1rem;
+      position: relative;
+    }
+    .error-quote > p {
+      padding: 0;
+      margin: 0;
     }
   }
 
