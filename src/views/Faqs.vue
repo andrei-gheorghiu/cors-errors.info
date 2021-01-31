@@ -1,38 +1,48 @@
 <template>
   <div class="page">
     <div role="list">
-      <question v-for="faq in questions"
-                :key="faq.id"
-                :faq="faq"
-                role="listitem" />
+      <Suspense @resolve="scrollToSection(hash)">
+        <template #default>
+          <question v-for="faq in questions"
+                    :key="faq.id"
+                    :faq="faq"
+                    role="listitem"/>
+        </template>
+        <template #fallback>
+          <div class="loader">
+            loading answers...
+          </div>
+        </template>
+      </Suspense>
     </div>
+
   </div>
 </template>
 
 <script lang="ts">
 import Question from '@/components/Question.vue'
-import { computed, defineComponent, watchEffect, watch, inject } from 'vue'
+import { computed, defineComponent, watchEffect, watch, nextTick } from 'vue'
 import { useStore } from '@/store'
 import { useRouter } from 'vue-router'
+import { useGsap } from '@/plugins/gsap'
 
 export default defineComponent({
   name: 'Faqs',
-  inject: ['gsap'],
   components: {
     Question
   },
   setup () {
     const store = useStore()
     const router = useRouter()
-    const gsap: any = inject('$gsap')
-    const scrollToHash = (hash: string) => {
+    const gsap = useGsap()
+    const scrollToSection = (hash: string) => {
       if (hash) {
         const target = document.querySelector(hash)
         if (target instanceof HTMLElement) {
           gsap.to(target.closest('.ps'),
             {
               duration: 0.65,
-              scrollTo: { y: target, offsetY: 90 }
+              scrollTo: { y: target, offsetY: 98 }
             })
         }
       }
@@ -46,19 +56,16 @@ export default defineComponent({
       }
     })
     watch(() => activeTheme.value, () => {
-      scrollToHash(hash.value)
+      scrollToSection(hash.value)
     })
     watchEffect(() => {
-      scrollToHash(hash.value)
+      scrollToSection(hash.value)
     })
     return {
       hash,
       questions,
-      scrollToHash
+      scrollToSection
     }
-  },
-  mounted () {
-    this.$nextTick(() => setTimeout(() => this.scrollToHash(this.hash), 1234))
   }
 })
 </script>

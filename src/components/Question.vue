@@ -47,7 +47,7 @@ export default defineComponent({
     RelatedLink,
     VueMarkdownIt
   },
-  setup (props) {
+  async setup (props) {
     const store = useStore()
     const router = useRouter()
     const source = ref('')
@@ -68,7 +68,7 @@ export default defineComponent({
         }
       }
     }
-    axios.get(`/faq/${props.faq.id}.md`)
+    await axios.get(`/faq/${props.faq.id}.md`)
       .then(r => {
         source.value = r.data
       })

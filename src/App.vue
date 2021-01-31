@@ -24,15 +24,9 @@ import { defineComponent, computed } from 'vue'
 import Navbar from '@/components/Navbar.vue'
 import Sidebar from '@/components/Sidebar.vue'
 import { useStore } from '@/store'
-import gsap from 'gsap'
-import ScrollToPlugin from 'gsap/ScrollToPlugin'
-gsap.registerPlugin(ScrollToPlugin)
 
 export default defineComponent({
   name: 'App',
-  provide: {
-    $gsap: gsap
-  },
   components: {
     Sidebar,
     Navbar

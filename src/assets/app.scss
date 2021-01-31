@@ -125,6 +125,9 @@ body {
   .page-wrapper {
     flex-grow: 1;
     display: flex;
+    .loader {
+      margin-top: 65px;
+    }
   }
 
   .sidebar {
