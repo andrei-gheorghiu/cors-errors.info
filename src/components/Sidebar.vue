@@ -32,9 +32,3 @@ export default defineComponent({
   }
 })
 </script>
-<style lang="scss">
-  .sidebar .ps {
-    height: 100vh;
-    overflow: hidden;
-  }
-</style>

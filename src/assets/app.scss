@@ -139,7 +139,6 @@ body {
     flex-grow: 0;
     border-right: 1px solid var(--layout-divider);
     background-color: var(--section-bg-1);
-
     nav {
       padding: 1rem 0;
 
@@ -172,6 +171,8 @@ body {
     .ps {
       margin-top: -60px;
       padding: 60px 0;
+      height: 100vh;
+      overflow: hidden;
     }
   }
 

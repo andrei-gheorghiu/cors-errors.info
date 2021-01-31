@@ -1,6 +1,6 @@
 <template>
   <div class="theme-selector" @click="isVisible = !isVisible">
-    <geek />
+    <geek-icon />
     <div class="dropdown" v-if="isVisible">
       <a href
          v-for="theme in themes"
@@ -12,12 +12,13 @@
   </div>
 </template>
 <script lang="ts">
-import { defineComponent } from 'vue'
-import Geek from './GeekIcon.vue'
+import { defineComponent, ref } from 'vue'
+import GeekIcon from './GeekIcon.vue'
+import themes from '@/assets/themes.json'
 export default defineComponent({
   name: 'ThemeSwitch',
   components: {
-    Geek
+    GeekIcon
   },
   props: {
     activeTheme: {
@@ -25,17 +26,7 @@ export default defineComponent({
     }
   },
   data: () => ({
-    themes: [
-      {
-        class: 'stackoverflow-light',
-        name: 'Flow Overstack'
-      }, {
-        class: 'wild-duck',
-        name: 'Chemical lobster'
-      }, {
-        class: 'vuetiful',
-        name: 'Vuetiful'
-      }],
+    themes,
     isVisible: false
   }),
   emits: ['update:activeTheme']
