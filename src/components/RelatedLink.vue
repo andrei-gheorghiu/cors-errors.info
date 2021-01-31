@@ -1,6 +1,7 @@
 <template>
   <li>
-    <router-link :to="{path: '/faq', hash: `#${identifier}`}" v-text="name" />
+    <router-link :to="{ path: '/faq', hash: `#${identifier}` }"
+                 v-text="name" />
   </li>
 </template>
 
@@ -22,8 +23,7 @@ export default defineComponent({
     const name = computed(
       () => questions.value.find(f => f.id === props.identifier)?.name || `#${props.identifier}`
     )
-    const activateQuestion = () => store.commit('setActiveIndex', props.identifier)
-    return { name, activateQuestion }
+    return { name }
   }
 })
 </script>

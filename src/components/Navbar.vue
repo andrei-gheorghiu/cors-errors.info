@@ -18,7 +18,7 @@ export default defineComponent({
     const store = useStore()
     const activeTheme = computed({
       get () { return store.state.activeTheme },
-      set (val) { store.commit('setActiveTheme', val) }
+      set (theme) { store.commit('setActiveTheme', theme) }
     })
     return {
       activeTheme

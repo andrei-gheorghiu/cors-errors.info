@@ -17,17 +17,9 @@ const store = createStore<State>({
     setActiveIndex (state: State, id: string) {
       state.activeIndex = id
     },
-    setQuestions (state: State, questions: Faq[]) {
-      state.questions = questions
-    },
     setActiveTheme (state: State, theme: string) {
       state.activeTheme = theme
     }
-  },
-  actions: {
-  },
-  getters: {
-    activeQuestion: (state: State) => state.questions.find(f => f.id === state.activeIndex)
   }
 })
 

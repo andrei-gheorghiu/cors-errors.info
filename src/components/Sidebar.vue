@@ -3,13 +3,14 @@
     <perfect-scrollbar>
       <nav role="navigation">
         <router-link :to="`/faq#${faq.id}`"
-                     v-for="faq in faqs"
+                     v-for="faq in questions"
                      :key="faq.id"
                      tag="div"
                      v-slot="{ href, route, navigate }">
           <a :href="href"
              :class="{ active: route.hash === currentHash }"
-             @click="navigate">{{  faq.name }}</a>
+             v-text="faq.name"
+             @click="navigate"/>
         </router-link>
       </nav>
     </perfect-scrollbar>
@@ -25,8 +26,8 @@ export default defineComponent({
     const store = useStore()
     const router = useRouter()
     const currentHash = computed(() => router.currentRoute.value.hash)
-    const faqs = store.state.questions
-    return { faqs, currentHash }
+    const questions = store.state.questions
+    return { questions, currentHash }
   }
 })
 </script>

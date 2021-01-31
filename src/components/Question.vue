@@ -5,21 +5,25 @@
            itemprop="mainEntity"
            itemtype="https://schema.org/Question">
     <h3>
-      <router-link :to="{path: '/faq', hash: `#${faq.id}`}" v-text="faq.name" itemprop="name" />
+      <router-link :to="{path: '/faq', hash: `#${faq.id}`}"
+                   v-text="faq.name"
+                   itemprop="name"/>
     </h3>
     <div itemscope
          itemprop="acceptedAnswer"
          itemtype="https://schema.org/Answer"
          class="answer-body">
       <div itemprop="text" @click="scrollCheck">
-        <vue-markdown-it :source="source" :plugins="plugins" :html="true" />
+        <vue-markdown-it :source="source"
+                         :plugins="plugins"
+                         :html="true"/>
       </div>
       <div class="related-questions" v-if="faq.related">
         <h4>Related</h4>
         <ul>
-          <related-link v-for="related in faq.related"
-                        :identifier="related"
-                        :key="related" />
+          <related-link v-for="id in faq.related"
+                        :key="id"
+                        :identifier="id"/>
         </ul>
       </div>
     </div>
@@ -27,17 +31,14 @@
 </template>
 
 <script lang="ts">
-import MiHighlightJs from 'markdown-it-highlightjs'
-import MiAttrs from 'markdown-it-attrs'
-import { defineComponent, ref, nextTick, computed } from 'vue'
+import MarkdownItHighlightJs from 'markdown-it-highlightjs'
+import MarkdownItAttrs from 'markdown-it-attrs'
+import { defineComponent, ref, computed } from 'vue'
 import axios from 'axios'
 import VueMarkdownIt from 'vue3-markdown-it'
 import RelatedLink from '@/components/RelatedLink.vue'
 import { useStore } from '@/store'
-import gsap from 'gsap'
-import ScrollToPlugin from 'gsap/ScrollToPlugin'
 import { useRouter } from 'vue-router'
-gsap.registerPlugin(ScrollToPlugin)
 
 export default defineComponent({
   name: 'Question',
@@ -72,19 +73,10 @@ export default defineComponent({
         source.value = r.data
       })
 
-    const plugins = [{
-      plugin: MiHighlightJs,
-      options: {
-        register: {
-          shell: require('highlight.js/lib/languages/shell'),
-          bash: require('highlight.js/lib/languages/bash'),
-          cpp: require('highlight.js/lib/languages/cpp'),
-          asciidoc: require('highlight.js/lib/languages/asciidoc')
-        }
-      }
-    }, {
-      plugin: MiAttrs
-    }]
+    const plugins = [
+      { plugin: MarkdownItHighlightJs },
+      { plugin: MarkdownItAttrs }
+    ]
     return {
       source,
       isActive,
@@ -92,36 +84,6 @@ export default defineComponent({
       onClick,
       scrollCheck
     }
-  },
-  mounted () {
-    fetch(require('../assets/external.svg'))
-      .then(r => { console.log(r); return r })
-      .then(r => r.text())
-      .then(r => {
-        const s = 'data:image/svg+xml;base64,' + encodeURIComponent(r)
-      })
   }
 })
 </script>
-
-<style scoped>
-.answer-body {
-  will-change: height;
-  transform: translateZ(0);
-  backface-visibility: hidden;
-  perspective: 1000px;
-  transition: height .42s cubic-bezier(.4,0,.2,1);
-}
-</style>
-
-<style lang="scss">
-.expand-enter-active,
-.expand-leave-active {
-  overflow: hidden;
-}
-
-.expand-enter,
-.expand-leave-to {
-  height: 0;
-}
-</style>
